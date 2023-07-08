@@ -100,13 +100,14 @@ httpRequest.onreadystatechange = function()
     {
         if(this.status == 200)
         {
-            // console.log('call successful');
+            console.log('call successful');
             contentTitle = JSON.parse(this.responseText)
 
             let counter = Number(document.cookie.split(',')[1].split('=')[1])
             document.getElementById("totalItem").innerHTML = ('Total Items: ' + counter)
 
-            let item = document.cookie.split(',')[0].split('=')[1].split(" ")
+            // let item = document.cookie.split(',')[0].split('=')[1].split(" ")
+            let item = document.cookie.split(',')[0].split('=')[3].split(" ")
             console.log(counter)
             console.log(item)
 
@@ -137,7 +138,3 @@ httpRequest.onreadystatechange = function()
 
 httpRequest.open('GET', 'https://5d76bf96515d1a0014085cf9.mockapi.io/product', true)
 httpRequest.send()
-
-
-
-
