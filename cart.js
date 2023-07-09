@@ -2,7 +2,8 @@ console.clear();
 
 if(document.cookie.indexOf(',counter=')>=0)
 {
-    let counter = document.cookie.split(',')[1].split('=')[1]
+    // let counter = document.cookie.split(',')[1].split('=')[1]
+    let counter = document.cookie.split(',')[1].split('=')[1].split(';')[0]
     document.getElementById("badge").innerHTML = counter
 }
 
@@ -103,11 +104,11 @@ httpRequest.onreadystatechange = function()
             console.log('call successful');
             contentTitle = JSON.parse(this.responseText)
 
-            let counter = Number(document.cookie.split(',')[1].split('=')[1])
+            let counter = Number(document.cookie.split(',')[1].split('=')[1].split(';')[0])
             document.getElementById("totalItem").innerHTML = ('Total Items: ' + counter)
 
             // let item = document.cookie.split(',')[0].split('=')[1].split(" ")
-            let item = document.cookie.split(',')[0].split('=')[3].split(" ")
+            let item = document.cookie.split(',')[0].split('=').pop().split(" ")
             console.log(counter)
             console.log(item)
 

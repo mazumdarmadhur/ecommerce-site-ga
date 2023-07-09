@@ -5,7 +5,7 @@ console.log(id)
 
 if(document.cookie.indexOf(',counter=')>=0)
 {
-    let counter = document.cookie.split(',')[1].split('=')[1]
+    let counter = document.cookie.split(',')[1].split('=')[1].split(';')[0]
     document.getElementById("badge").innerHTML = counter
 }
 
@@ -91,8 +91,11 @@ function dynamicContentDetails(ob)
         let counter = 1
         if(document.cookie.indexOf(',counter=')>=0)
         {
-            order = id + " " + document.cookie.split(',')[0].split('=')[1]
-            counter = Number(document.cookie.split(',')[1].split('=')[1]) + 1
+            // order = id + " " + document.cookie.split(',')[0].split('=')[1]
+            // order = id + " " + document.cookie.split(',')[0].split('=')[3]
+            order = id + " " + document.cookie.split(',')[0].split('=').slice(-1)
+            // counter = Number(document.cookie.split(',')[1].split('=')[1]) + 1
+            counter = Number(document.cookie.split(',')[1].split('=')[1].split(';')[0]) + 1
         }
         document.cookie = "orderId=" + order + ",counter=" + counter
         document.getElementById("badge").innerHTML = counter

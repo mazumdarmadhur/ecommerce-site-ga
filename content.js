@@ -62,7 +62,7 @@ httpRequest.onreadystatechange = function() {
       // console.log('call successful');
       contentTitle = JSON.parse(this.responseText);
       if (document.cookie.indexOf(",counter=") >= 0) {
-        var counter = document.cookie.split(",")[1].split("=")[1];
+        var counter = document.cookie.split(',')[1].split('=')[1].split(';')[0];
         document.getElementById("badge").innerHTML = counter;
       }
       for (let i = 0; i < contentTitle.length; i++) {
