@@ -1,5 +1,5 @@
 # E-CommerceWebsite
- A mobile responsive sample of E-Commerce Website using HTML, CSS, JavaScript and API's
+E-commerce website for testing Google Analytics 4 with Google Tag Manager
  
  
  
