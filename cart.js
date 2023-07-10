@@ -129,6 +129,40 @@ httpRequest.onreadystatechange = function()
                 i += (itemCounter-1)
             }
             amountUpdate(totalAmount)
+            
+            // DataLayer PUSH
+            function buildProducts() {
+                var i = 0;
+                 var theProducts = [];
+                 $("div#box").each(function () {
+                  var id = document.cookie.split(',')[0].split('=').pop().split(" ")[i++];
+                   var prod_name = $(this).find("h3").text().split(' × ')[0];
+                   var prod_price = $(this).find("h4").text().split("Rs").pop();
+                   var prod_quantity = $(this).find("h3").text().split(' × ')[1];
+                   console.log(prod_name)
+               
+                   theProducts.push({
+                     item_id: id,
+                     item_name: prod_name,
+                     price: prod_price,
+                     quantity: prod_quantity,
+                   });
+                 });
+               
+                 return theProducts;
+               }
+                 
+               window.dataLayer = window.dataLayer || [];
+               dataLayer.push({ ecommerce: null });
+               dataLayer.push({
+                 event: "add_to_cart",
+                 ecommerce: {
+                   currency: "USD",
+                   value: $("#total h4").text().split("Rs ").pop(),
+                   items: buildProducts(),
+                 },
+               });
+            
         }
     }
         else
@@ -136,6 +170,8 @@ httpRequest.onreadystatechange = function()
             console.log('call failed!');
         }
 }
+
+
 
 httpRequest.open('GET', 'https://5d76bf96515d1a0014085cf9.mockapi.io/product', true)
 httpRequest.send()
