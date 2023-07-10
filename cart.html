@@ -65,4 +65,22 @@
         }
     </script>
 <script src="/cart.js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  dataLayer.push({ ecommerce: null });
+  dataLayer.push({
+    event: "add_to_cart",
+    ecommerce: {
+      currency: "USD",
+      value:7.77,
+      items: [{
+        item_id: "SKU_12345",
+        item_name: "Stan and Friends Tee",
+        price: 10,
+        quantity: 1,
+      }]
+    },
+  });
+</script>
+
 </html>
